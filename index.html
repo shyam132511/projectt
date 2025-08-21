@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily News</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background: #f4f4f4;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #222;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+    }
+
+    nav .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #ff5252;
+    }
+
+    /* Breaking News */
+    .breaking-news {
+      background: #b71c1c; 
+      color: #fff;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+      animation: slide 10s linear infinite;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 40px auto;
+    }
+
+    /* News Grid */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .news-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transform: translateY(30px);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .news-card.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      transition: 0.3s;
+    }
+
+    .news-card h2 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #111;
+    }
+
+    .news-card p {
+      color: #555;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .news-card a {
+      text-decoration: none;
+      color: #b71c1c;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .news-card a:hover {
+      color: #222;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      background: #222;
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="logo">Daily News</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">World</a></li>
+      <li><a href="#">Tech</a></li>
+      <li><a href="#">Sports</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Breaking News -->
+  <div class="breaking-news">
+    Breaking News: Major Global Event Happening Right Now!
+  </div>
+
+  <!-- News Section -->
+  <div class="container">
+    <div class="news-grid">
+      <div class="news-card">
+        <h2>Headline 1</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <a href="article.html">Read More →</a>
+      </div>
+
+      <div class="news-card">
+        <h2>Headline 2</h2>
+        <p>Phasellus iaculis neque purus sodales lorem ipsum dolor...</p>
+        <a href="article.html">Read More →</a>
+      </div>
+
+      <div class="news-card">
+        <h2>Headline 3</h2>
+        <p>Aliquam erat volutpat. Nullam imperdiet mauris in ligula...</p>
+        <a href="article.html">Read More →</a>
+      </div>
+
+      <div class="news-card">
+        <h2>Headline 4</h2>
+        <p>Donec at eros sed erat pretium posuere sit amet eget nisl...</p>
+        <a href="article.html">Read More →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 Daily News. All Rights Reserved.
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const cards = document.querySelectorAll('.news-card');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
+</body>
+</html>
